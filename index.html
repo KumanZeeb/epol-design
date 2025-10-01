@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epol Design - Jasa Desain Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0f0d 0%, #15231d 100%);
+            color: #e0f7e9;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(16, 36, 25, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(72, 255, 163, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 25, 18, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #48ffa3;
+            text-shadow: 0 0 10px rgba(72, 255, 163, 0.7);
+        }
+        
+        .logo span {
+            color: #ffffff;
+        }
+        
+        .menu-toggle {
+            display: block;
+            font-size: 24px;
+            color: #48ffa3;
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 25, 18, 0.95);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-links.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .nav-links li {
+            margin: 15px 0;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #e0f7e9;
+            font-weight: 500;
+            font-size: 18px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #48ffa3;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #48ffa3;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            width: 100%;
+            z-index: 2;
+            position: relative;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to right, #48ffa3, #1ce67a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(72, 255, 163, 0.2);
+        }
+        
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #c8f4d9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #48ffa3 0%, #1ce67a 100%);
+            color: #0a0f0d;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(72, 255, 163, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(72, 255, 163, 0.6);
+        }
+        
+        /* Floating Images - Mobile Optimized dengan Efek 3D */
+        .floating-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .floating-image {
+            position: absolute;
+            border-radius: 10px;
+            filter: blur(1px);
+            opacity: 0.8;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            background-color: rgba(26, 42, 34, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #48ffa3;
+            font-size: 10px;
+            text-align: center;
+            width: 60px;
+            height: 60px;
+            z-index: 1;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        /* Gambar di sebelah kiri - rotate X 30deg, Y 45deg */
+        .floating-image.left-side {
+            transform: rotateX(30deg) rotateY(45deg);
+        }
+        
+        /* Gambar di sebelah kanan - rotate X 30deg, Y -45deg */
+        .floating-image.right-side {
+            transform: rotateX(30deg) rotateY(-45deg);
+        }
+        
+        .floating-image:hover {
+            filter: blur(0);
+            opacity: 1;
+            transform: scale(1.2) rotateX(0) rotateY(0);
+            z-index: 10;
+        }
+        
+        .img-1 {
+            top: 20%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .img-2 {
+            top: 50%;
+            left: 80%;
+            animation: float 7s ease-in-out infinite 1s;
+        }
+        
+        .img-3 {
+            top: 30%;
+            left: 70%;
+            animation: float 5s ease-in-out infinite 0.5s;
+        }
+        
+        .img-4 {
+            top: 60%;
+            left: 15%;
+            animation: float 8s ease-in-out infinite 1.5s;
+        }
+        
+        .img-5 {
+            top: 75%;
+            left: 60%;
+            animation: float 6s ease-in-out infinite 0.8s;
+        }
+        
+        .img-6 {
+            top: 40%;
+            left: 30%;
+            animation: float 7s ease-in-out infinite 1.2s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        /* Gallery Section dengan Kolase Futuristik */
+        .gallery {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #48ffa3;
+            text-shadow: 0 0 10px rgba(72, 255, 163, 0.5);
+        }
+        
+        .section-title p {
+            color: #c8f4d9;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+        
+        /* Grid Kolase Responsif untuk Semua Device */
+        .collage-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            gap: 15px;
+            height: 80vh;
+            max-height: 800px;
+            min-height: 600px;
+        }
+        
+        .collage-item {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: rgba(16, 36, 25, 0.4);
+            border: 1px solid rgba(72, 255, 163, 0.1);
+            position: relative;
+        }
+        
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .collage-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(72, 255, 163, 0.3);
+            z-index: 10;
+        }
+        
+        .collage-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Penempatan grid untuk setiap item - Desktop */
+        .item-1 {
+            grid-column: 1 / 5;
+            grid-row: 1 / 4;
+        }
+        
+        .item-2 {
+            grid-column: 5 / 9;
+            grid-row: 1 / 5;
+        }
+        
+        .item-3 {
+            grid-column: 9 / 13;
+            grid-row: 1 / 3;
+        }
+        
+        .item-4 {
+            grid-column: 1 / 4;
+            grid-row: 4 / 7;
+        }
+        
+        .item-5 {
+            grid-column: 4 / 7;
+            grid-row: 4 / 6;
+        }
+        
+        .item-6 {
+            grid-column: 7 / 10;
+            grid-row: 5 / 8;
+        }
+        
+        .item-7 {
+            grid-column: 10 / 13;
+            grid-row: 3 / 6;
+        }
+        
+        .item-8 {
+            grid-column: 4 / 7;
+            grid-row: 6 / 9;
+        }
+        
+        .item-9 {
+            grid-column: 7 / 10;
+            grid-row: 1 / 5;
+        }
+        
+        .item-10 {
+            grid-column: 10 / 13;
+            grid-row: 6 / 9;
+        }
+        
+        .collage-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 15, 13, 0.9), transparent);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .collage-item:hover .collage-overlay {
+            transform: translateY(0);
+        }
+        
+        .collage-overlay h3 {
+            color: #48ffa3;
+            margin-bottom: 5px;
+            font-size: 16px;
+            text-shadow: 0 0 5px rgba(72, 255, 163, 0.5);
+        }
+        
+        .collage-overlay p {
+            font-size: 12px;
+            color: #c8f4d9;
+        }
+        
+        .collage-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(72, 255, 163, 0.2);
+            color: #48ffa3;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(72, 255, 163, 0.3);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: rgba(16, 36, 25, 0.3);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .service-card {
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(72, 255, 163, 0.2);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: rgba(72, 255, 163, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #48ffa3;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #48ffa3;
+        }
+        
+        .service-card p {
+            font-size: 15px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #48ffa3;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 16px;
+            color: #c8f4d9;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(5, 12, 8, 0.9);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #48ffa3;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #c8f4d9;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+        
+        .footer-links a:hover {
+            color: #48ffa3;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(72, 255, 163, 0.1);
+            border-radius: 50%;
+            color: #48ffa3;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #48ffa3;
+            color: #0a0f0d;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(72, 255, 163, 0.2);
+            color: #8bbfa5;
+            font-size: 14px;
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            .nav-links {
+                position: static;
+                display: flex;
+                flex-direction: row;
+                width: auto;
+                background: transparent;
+                padding: 0;
+                transform: translateY(0);
+                opacity: 1;
+                box-shadow: none;
+            }
+            
+            .nav-links li {
+                margin: 0 0 0 30px;
+            }
+            
+            .nav-links a {
+                font-size: 16px;
+            }
+            
+            .hero-content {
+                text-align: left;
+                max-width: 600px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .floating-image {
+                width: 70px;
+                height: 70px;
+                font-size: 12px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .floating-image {
+                width: 80px;
+                height: 80px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Mobile Styles untuk Collage */
+        @media (max-width: 767px) {
+            .collage-container {
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: repeat(12, 1fr);
+                height: auto;
+                min-height: 1000px;
+                max-height: none;
+            }
+            
+            /* Penempatan grid untuk mobile - tetap mempertahankan pola yang menarik */
+            .item-1 {
+                grid-column: 1 / 4;
+                grid-row: 1 / 3;
+            }
+            
+            .item-2 {
+                grid-column: 4 / 7;
+                grid-row: 1 / 4;
+            }
+            
+            .item-3 {
+                grid-column: 1 / 4;
+                grid-row: 3 / 5;
+            }
+            
+            .item-4 {
+                grid-column: 1 / 4;
+                grid-row: 5 / 7;
+            }
+            
+            .item-5 {
+                grid-column: 4 / 7;
+                grid-row: 4 / 6;
+            }
+            
+            .item-6 {
+                grid-column: 1 / 4;
+                grid-row: 7 / 9;
+            }
+            
+            .item-7 {
+                grid-column: 4 / 7;
+                grid-row: 6 / 9;
+            }
+            
+            .item-8 {
+                grid-column: 1 / 4;
+                grid-row: 9 / 11;
+            }
+            
+            .item-9 {
+                grid-column: 4 / 7;
+                grid-row: 9 / 12;
+            }
+            
+            .item-10 {
+                grid-column: 1 / 4;
+                grid-row: 11 / 13;
+            }
+            
+            .collage-overlay h3 {
+                font-size: 14px;
+            }
+            
+            .collage-overlay p {
+                font-size: 11px;
+            }
+        }
+        
+        /* Extra Small Devices */
+        @media (max-width: 480px) {
+            .collage-container {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(16, 1fr);
+                min-height: 1200px;
+            }
+            
+            .item-1 {
+                grid-column: 1 / 3;
+                grid-row: 1 / 3;
+            }
+            
+            .item-2 {
+                grid-column: 3 / 5;
+                grid-row: 1 / 4;
+            }
+            
+            .item-3 {
+                grid-column: 1 / 3;
+                grid-row: 3 / 5;
+            }
+            
+            .item-4 {
+                grid-column: 1 / 3;
+                grid-row: 5 / 7;
+            }
+            
+            .item-5 {
+                grid-column: 3 / 5;
+                grid-row: 4 / 6;
+            }
+            
+            .item-6 {
+                grid-column: 1 / 3;
+                grid-row: 7 / 9;
+            }
+            
+            .item-7 {
+                grid-column: 3 / 5;
+                grid-row: 6 / 9;
+            }
+            
+            .item-8 {
+                grid-column: 1 / 3;
+                grid-row: 9 / 11;
+            }
+            
+            .item-9 {
+                grid-column: 3 / 5;
+                grid-row: 9 / 12;
+            }
+            
+            .item-10 {
+                grid-column: 1 / 3;
+                grid-row: 11 / 13;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="glass">
+        <div class="container">
+            <nav>
+                <div class="logo">Epol<span>Design</span></div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                    <li><a href="#" class="btn">Pesan Sekarang</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transformasi Ide Menjadi Desain Menakjubkan</h1>
+                <p>Epol Design menghadirkan solusi desain kreatif dengan sentuhan profesional. Dari branding hingga ilustrasi digital, kami siap mewujudkan visi Anda.</p>
+                <a href="#gallery" class="btn">Lihat Karya Kami <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        
+        <!-- Floating Images - Mobile Optimized dengan Efek 3D -->
+        <div class="floating-images">
+            <div class="floating-image img-1 glass left-side">
+                <div>UI/UX</div>
+            </div>
+            <div class="floating-image img-2 glass right-side">
+                <div>Brand</div>
+            </div>
+            <div class="floating-image img-3 glass right-side">
+                <div>Logo</div>
+            </div>
+            <div class="floating-image img-4 glass left-side">
+                <div>Web</div>
+            </div>
+            <div class="floating-image img-5 glass right-side">
+                <div>Print</div>
+            </div>
+            <div class="floating-image img-6 glass left-side">
+                <div>Social</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section dengan Kolase Futuristik -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Portfolio Kami</h2>
+                <p>Jelajahi berbagai karya desain yang telah kami buat untuk klien dari berbagai industri</p>
+            </div>
+            
+            <div class="collage-container">
+                <div class="collage-item item-1 glass">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Branding Design">
+                    <div class="collage-badge">Branding</div>
+                    <div class="collage-overlay">
+                        <h3>Nexus Identity</h3>
+                        <p>Brand Identity & Logo Design</p>
+                    </div>
+                </div>
+                <div class="collage-item item-2 glass">
+                    <img src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Web Design">
+                    <div class="collage-badge">UI/UX</div>
+                    <div class="collage-overlay">
+                        <h3>Quantum Dashboard</h3>
+                        <p>Web Application Interface</p>
+                    </div>
+                </div>
+                <div class="collage-item item-3 glass">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Illustration">
+                    <div class="collage-badge">Illustration</div>
+                    <div class="collage-overlay">
+                        <h3>Cyberpunk Dreams</h3>
+                        <p>Digital Art & Illustration</p>
+                    </div>
+                </div>
+                <div class="collage-item item-4 glass">
+                    <img src="https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Packaging Design">
+                    <div class="collage-badge">Packaging</div>
+                    <div class="collage-overlay">
+                        <h3>Nova Packaging</h3>
+                        <p>Product Packaging Design</p>
+                    </div>
+                </div>
+                <div class="collage-item item-5 glass">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Social Media Design">
+                    <div class="collage-badge">Social Media</div>
+                    <div class="collage-overlay">
+                        <h3>Social Campaign</h3>
+                        <p>Social Media Content Design</p>
+                    </div>
+                </div>
+                <div class="collage-item item-6 glass">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Print Design">
+                    <div class="collage-badge">Print</div>
+                    <div class="collage-overlay">
+                        <h3>Corporate Brochure</h3>
+                        <p>Print Design & Layout</p>
+                    </div>
+                </div>
+                <div class="collage-item item-7 glass">
+                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Mobile App Design">
+                    <div class="collage-badge">Mobile App</div>
+                    <div class="collage-overlay">
+                        <h3>Fintech Mobile App</h3>
+                        <p>Mobile Application Design</p>
+                    </div>
+                </div>
+                <div class="collage-item item-8 glass">
+                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Motion Graphics">
+                    <div class="collage-badge">Motion</div>
+                    <div class="collage-overlay">
+                        <h3>Motion Identity</h3>
+                        <p>Animated Logo & Graphics</p>
+                    </div>
+                </div>
+                <div class="collage-item item-9 glass">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="3D Design">
+                    <div class="collage-badge">3D</div>
+                    <div class="collage-overlay">
+                        <h3>Architectural Visualization</h3>
+                        <p>3D Modeling & Rendering</p>
+                    </div>
+                </div>
+                <div class="collage-item item-10 glass">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Typography">
+                    <div class="collage-badge">Typography</div>
+                    <div class="collage-overlay">
+                        <h3>Modern Typography</h3>
+                        <p>Custom Font & Lettering</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Layanan Kami</h2>
+                <p>Berbagai solusi desain yang kami tawarkan untuk kebutuhan bisnis dan kreatif Anda</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card glass">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Branding & Logo</h3>
+                    <p>Desain identitas visual yang kuat dan memorable untuk membangun brand Anda</p>
+                </div>
+                <div class="service-card glass">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Desain antarmuka yang intuitif dan pengalaman pengguna yang optimal</p>
+                </div>
+                <div class="service-card glass">
+                    <div class="service-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Packaging Design</h3>
+                    <p>Desain kemasan produk yang menarik dan meningkatkan nilai jual</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Siap Mengubah Ide Menjadi Desain Menakjubkan?</h2>
+            <p>Jangan ragu untuk menghubungi kami dan diskusikan proyek desain Anda. Tim Epol Design siap membantu mewujudkan visi kreatif Anda.</p>
+            <a href="#" class="btn">Pesan Jasa Desain Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Epol Design</h3>
+                    <p>Menciptakan solusi desain kreatif dan profesional untuk bisnis modern dengan sentuhan inovatif.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tautan Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#services">Layanan</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> hello@epoldesign.com</li>
+                        <li><i class="fas fa-phone"></i> +62 812 3456 7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Epol Design. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Automatically apply left/right classes based on position
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingImages = document.querySelectorAll('.floating-image');
+            
+            floatingImages.forEach(img => {
+                const leftPosition = parseInt(img.style.left || getComputedStyle(img).left);
+                
+                // If we can't determine position from style, use class-based approach
+                if (isNaN(leftPosition)) {
+                    return;
+                }
+                
+                // Apply class based on position
+                if (leftPosition < 50) {
+                    img.classList.add('left-side');
+                } else {
+                    img.classList.add('right-side');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
