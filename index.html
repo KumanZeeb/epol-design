@@ -211,11 +211,20 @@
             color: #48ffa3;
             font-size: 10px;
             text-align: center;
-            width: 60px;
-            height: 60px;
+            width: 120px;
+            height: 120px;
             z-index: 1;
             transform-style: preserve-3d;
             perspective: 1000px;
+        }
+        
+        /* Style untuk gambar di dalam floating-image */
+        .floating-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all 0.5s ease;
         }
         
         /* Gambar di sebelah kiri - rotate X 30deg, Y 45deg */
@@ -233,6 +242,10 @@
             opacity: 1;
             transform: scale(1.2) rotateX(0) rotateY(0);
             z-index: 10;
+        }
+        
+        .floating-image:hover img {
+            transform: scale(1.1);
         }
         
         .img-1 {
@@ -799,22 +812,22 @@
         <!-- Floating Images - Mobile Optimized dengan Efek 3D -->
         <div class="floating-images">
             <div class="floating-image img-1 glass left-side">
-                <div>UI/UX</div>
+                <img src="assets/Picsart_25-03-27_21-56-07-910_upscaled.jpg" alt="design">
             </div>
             <div class="floating-image img-2 glass right-side">
-                <div>Brand</div>
+                <img src="assets/Picsart_25-04-04_20-55-21-834_upscaled.jpg" alt="Brand Design">
             </div>
             <div class="floating-image img-3 glass right-side">
-                <div>Logo</div>
+                <img src="assets/Picsart_25-09-15_14-22-34-887_upscaled.jpg" alt="Logo Design">
             </div>
             <div class="floating-image img-4 glass left-side">
-                <div>Web</div>
+                <img src="assets/Picsart_25-09-29_11-18-48-818_imgupscaler.ai_v1(Fast)_4K.png" alt="Web Design">
             </div>
             <div class="floating-image img-5 glass right-side">
-                <div>Print</div>
+                <img src="assets/Picsart_25-09-28_11-45-18-080_imgupscaler.ai_General_4K.jpg.png" alt="Print Design">
             </div>
             <div class="floating-image img-6 glass left-side">
-                <div>Social</div>
+                <img src="assets/20250929_153049_imgupscaler.ai_v1(Fast)_2K.png" alt="Social Media Design">
             </div>
         </div>
     </section>
@@ -829,7 +842,7 @@
             
             <div class="collage-container">
                 <div class="collage-item item-1 glass">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Branding Design">
+                    <img src="assets/Picsart_25-03-27_21-56-07-910_upscaled.jpg" alt="Branding Design">
                     <div class="collage-badge">Branding</div>
                     <div class="collage-overlay">
                         <h3>Nexus Identity</h3>
@@ -837,7 +850,7 @@
                     </div>
                 </div>
                 <div class="collage-item item-2 glass">
-                    <img src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Web Design">
+                    <img src="assets/Picsart_25-09-28_10-07-46-995_imgupscaler.ai_General_4K.jpg.png" alt="Web Design">
                     <div class="collage-badge">UI/UX</div>
                     <div class="collage-overlay">
                         <h3>Quantum Dashboard</h3>
@@ -845,7 +858,7 @@
                     </div>
                 </div>
                 <div class="collage-item item-3 glass">
-                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Illustration">
+                    <img src="assets/Picsart_25-09-23_23-47-32-926_upscaled.jpg" alt="Illustration">
                     <div class="collage-badge">Illustration</div>
                     <div class="collage-overlay">
                         <h3>Cyberpunk Dreams</h3>
@@ -853,7 +866,7 @@
                     </div>
                 </div>
                 <div class="collage-item item-4 glass">
-                    <img src="https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Packaging Design">
+                    <img src="assets/Picsart_25-03-27_12-12-51-715_upscaled.jpg" alt="Packaging Design">
                     <div class="collage-badge">Packaging</div>
                     <div class="collage-overlay">
                         <h3>Nova Packaging</h3>
@@ -861,7 +874,7 @@
                     </div>
                 </div>
                 <div class="collage-item item-5 glass">
-                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Social Media Design">
+                    <img src="assets/20250929_153049_imgupscaler.ai_v1(Fast)_2K.png" alt="Social Media Design">
                     <div class="collage-badge">Social Media</div>
                     <div class="collage-overlay">
                         <h3>Social Campaign</h3>
@@ -869,7 +882,7 @@
                     </div>
                 </div>
                 <div class="collage-item item-6 glass">
-                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Print Design">
+                    <img src="assets/Picsart_25-09-26_12-36-40-522_imgupscaler.ai_General_4K.jpg.png" alt="Print Design">
                     <div class="collage-badge">Print</div>
                     <div class="collage-overlay">
                         <h3>Corporate Brochure</h3>
@@ -877,7 +890,7 @@
                     </div>
                 </div>
                 <div class="collage-item item-7 glass">
-                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Mobile App Design">
+                    <img src="assets/Picsart_25-05-13_03-38-56-662_upscaled.jpg" alt="Mobile App Design">
                     <div class="collage-badge">Mobile App</div>
                     <div class="collage-overlay">
                         <h3>Fintech Mobile App</h3>
@@ -885,7 +898,7 @@
                     </div>
                 </div>
                 <div class="collage-item item-8 glass">
-                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Motion Graphics">
+                    <img src="assets/Picsart_25-02-20_22-41-11-221_upscaled.jpg" alt="Motion Graphics">
                     <div class="collage-badge">Motion</div>
                     <div class="collage-overlay">
                         <h3>Motion Identity</h3>
@@ -893,7 +906,7 @@
                     </div>
                 </div>
                 <div class="collage-item item-9 glass">
-                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="3D Design">
+                    <img src="assets/Picsart_25-09-23_23-47-32-926_upscaled.jpg" alt="3D Design">
                     <div class="collage-badge">3D</div>
                     <div class="collage-overlay">
                         <h3>Architectural Visualization</h3>
@@ -901,7 +914,7 @@
                     </div>
                 </div>
                 <div class="collage-item item-10 glass">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Typography">
+                    <img src="assets/Picsart_25-09-29_00-51-27-624_imgupscaler.ai_General_4K.jpg.png" alt="Typography">
                     <div class="collage-badge">Typography</div>
                     <div class="collage-overlay">
                         <h3>Modern Typography</h3>
